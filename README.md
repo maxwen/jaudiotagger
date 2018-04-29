@@ -6,6 +6,8 @@ This is a pure java library, you can compile the source to JAR file by yourself.
 
 The compiled JAR library works on Android platform, has been tested on API level 14 and above.
 
+This is just a fork of [hexise's work](https://github.com/hexise/jaudiotagger-android) that is available on Jitpack.
+
 <h2>Source</h2>
 
 The source code is based on Jaudiotagger library version 2.2.3.
