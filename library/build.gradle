@@ -5,7 +5,7 @@ group='com.github.jitpack'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
         minSdkVersion 14
@@ -45,11 +45,11 @@ artifacts {
 }
 
 // uncomment to build a jar file in addition to the default aar file
-//android.libraryVariants.all { variant ->
-//    def name = variant.buildType.name
-//    def task = project.tasks.create "jar${name.capitalize()}", Jar
-//    task.dependsOn variant.javaCompile
-//    task.from variant.javaCompile.destinationDir
-//    artifacts.add('archives', task);
-//}
+android.libraryVariants.all { variant ->
+    def name = variant.buildType.name
+    def task = project.tasks.create "jar${name.capitalize()}", Jar
+    task.dependsOn variant.javaCompile
+    task.from variant.javaCompile.destinationDir
+    artifacts.add('archives', task);
+}
 

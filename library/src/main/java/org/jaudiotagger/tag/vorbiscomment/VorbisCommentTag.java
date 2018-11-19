@@ -23,12 +23,14 @@ import org.jaudiotagger.audio.generic.AbstractTag;
 import org.jaudiotagger.audio.generic.Utils;
 import org.jaudiotagger.audio.ogg.util.VorbisHeader;
 import org.jaudiotagger.logging.ErrorMessage;
-import org.jaudiotagger.tag.*;
-import org.jaudiotagger.tag.images.Artwork;
-
-import static org.jaudiotagger.tag.vorbiscomment.VorbisCommentFieldKey.VENDOR;
-
+import org.jaudiotagger.tag.FieldDataInvalidException;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.InvalidFrameException;
+import org.jaudiotagger.tag.KeyNotFoundException;
+import org.jaudiotagger.tag.TagField;
+import org.jaudiotagger.tag.TagTextField;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.images.ArtworkFactory;
 import org.jaudiotagger.tag.vorbiscomment.util.Base64Coder;
 
@@ -38,6 +40,8 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
+
+import static org.jaudiotagger.tag.vorbiscomment.VorbisCommentFieldKey.VENDOR;
 
 /**
  * This is the logical representation of  Vorbis Comment Data
@@ -470,11 +474,11 @@ public class VorbisCommentTag extends AbstractTag
             }
             catch(IOException ioe)
             {
-                throw new RuntimeException(ioe);
+                //throw new RuntimeException(ioe);
             }
             catch(InvalidFrameException ife)
             {
-                throw new RuntimeException(ife);
+                //throw new RuntimeException(ife);
             }
         }
         return artworkList;
@@ -503,10 +507,10 @@ public class VorbisCommentTag extends AbstractTag
           }
           else
           {
-              if(!artwork.setImageFromData())
+              /*if(!artwork.setImageFromData())
               {
                   throw new FieldDataInvalidException("Unable to create MetadataBlockDataPicture from buffered");
-              }
+              }*/
               return new MetadataBlockDataPicture(artwork.getBinaryData(),
                       artwork.getPictureType(),
                       artwork.getMimeType(),
@@ -536,7 +540,7 @@ public class VorbisCommentTag extends AbstractTag
         }
         catch(UnsupportedEncodingException uee)
         {
-            throw new RuntimeException(uee);
+            throw new FieldDataInvalidException();
         }
     }
 

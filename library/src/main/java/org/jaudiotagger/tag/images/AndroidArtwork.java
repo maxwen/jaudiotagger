@@ -4,7 +4,6 @@ import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockDataPicture;
 import org.jaudiotagger.tag.id3.valuepair.ImageFormats;
 import org.jaudiotagger.tag.reference.PictureTypes;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -74,7 +73,7 @@ public class AndroidArtwork implements Artwork
      */
     public boolean setImageFromData()
     {
-        throw new UnsupportedOperationException();
+        return false;
     }
 
     public Object getImage() throws IOException
